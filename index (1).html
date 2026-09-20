@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pour Andrea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing:border-box;
+    --bg:#FFF9F7;
+    --rose:#F7E1DD;
+    --terracotta:#D98E73;
+    --texte:#3A2E2C;
+    --or:#C9A46A;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    background:var(--bg);
+    color:var(--texte);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,.serif{font-family:'Cormorant Garamond',serif;}
+  section{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:8vh 8vw;
+  }
+
+  /* --- ACCUEIL --- */
+  #accueil{position:relative;overflow:hidden;}
+  .petales{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+  .petales span{
+    position:absolute;
+    top:-5%;
+    width:10px;height:10px;
+    background:linear-gradient(135deg,#F4B8A8,var(--terracotta));
+    opacity:0.55;
+    border-radius:0 60% 0 60%;
+    animation:tomber linear infinite;
+  }
+  .petales span:nth-child(1){left:10%;animation-duration:9s;animation-delay:0s;}
+  .petales span:nth-child(2){left:30%;animation-duration:11s;animation-delay:2s;width:7px;height:7px;}
+  .petales span:nth-child(3){left:55%;animation-duration:8s;animation-delay:1s;}
+  .petales span:nth-child(4){left:75%;animation-duration:12s;animation-delay:3.5s;width:8px;height:8px;}
+  .petales span:nth-child(5){left:90%;animation-duration:10s;animation-delay:1.8s;width:6px;height:6px;}
+  @keyframes tomber{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0;}
+    10%{opacity:0.6;}
+    100%{transform:translateY(115vh) translateX(24px) rotate(340deg);opacity:0;}
+  }
+  .etincelles{position:absolute;inset:0;pointer-events:none;}
+  .etincelles span{
+    position:absolute;
+    width:4px;height:4px;
+    background:var(--or);
+    border-radius:50%;
+    opacity:0;
+    animation:scintiller 3.4s ease-in-out infinite;
+  }
+  .etincelles span:nth-child(1){left:30%;top:10%;animation-delay:0.2s;}
+  .etincelles span:nth-child(2){left:68%;top:14%;animation-delay:1.4s;}
+  .etincelles span:nth-child(3){left:22%;top:55%;animation-delay:2.2s;}
+  .etincelles span:nth-child(4){left:78%;top:50%;animation-delay:0.8s;}
+  @keyframes scintiller{
+    0%,100%{opacity:0;transform:scale(0.4);}
+    50%{opacity:0.9;transform:scale(1);}
+  }
+  .illustration{margin-top:1.4rem;opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.9s;}
+  .illustration svg{width:52px;height:auto;}
+  .illustration path{
+    fill:none;
+    stroke:var(--terracotta);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:340;
+    stroke-dashoffset:340;
+    animation:dessiner 1.8s ease forwards, pulser 2.8s ease-in-out infinite;
+    animation-delay:1.1s, 3s;
+  }
+  @keyframes dessiner{to{stroke-dashoffset:0;}}
+  @keyframes pulser{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.06);}
+  }
+  .illustration svg path{transform-origin:center;}
+  #accueil h1{
+    font-size:clamp(2.5rem,10vw,4rem);
+    font-weight:600;
+    opacity:0;
+    animation:fadeUp 1.4s ease forwards;
+  }
+  #accueil p.signature{
+    margin-top:1.2rem;
+    font-style:italic;
+    font-size:1.1rem;
+    opacity:0;
+    animation:fadeUp 1.4s ease forwards;
+    animation-delay:0.6s;
+  }
+  #compteur{
+    margin-top:2.5rem;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    color:#8a7a75;
+    opacity:0;
+    animation:fadeUp 1.4s ease forwards;
+    animation-delay:1.1s;
+  }
+  .fleche{
+    margin-top:3rem;
+    font-size:1.5rem;
+    color:var(--terracotta);
+    opacity:0;
+    animation:fadeUp 1.4s ease forwards, bounce 2.2s ease-in-out infinite;
+    animation-delay:1.6s, 2s;
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+
+  /* --- ILLUSTRATION CHIBI (section Le début) --- */
+  .chibi{margin-bottom:1.6rem;}
+  .chibi svg{width:min(220px,60vw);height:auto;}
+  .chibi .tete{fill:#F4C9B8;}
+  .chibi .tete-2{fill:var(--rose);}
+  .chibi .corps{fill:var(--terracotta);}
+  .chibi .corps-2{fill:var(--or);}
+  .chibi .coeur-vol{
+    fill:var(--terracotta);
+    transform-origin:110px 60px;
+    animation:coeurFlotte 2.6s ease-in-out infinite;
+  }
+  @keyframes coeurFlotte{
+    0%,100%{transform:translateY(0) scale(1);opacity:0.9;}
+    50%{transform:translateY(-6px) scale(1.12);opacity:1;}
+  }
+
+  /* --- SECTIONS GENERALES --- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.9s ease, transform 0.9s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  section h2{
+    font-size:clamp(1.8rem,6vw,2.6rem);
+    font-weight:600;
+    margin-bottom:1.8rem;
+  }
+  section p{
+    max-width:32ch;
+    font-size:1.05rem;
+  }
+  #pourquoi{background:var(--rose);}
+  .qualite{margin-bottom:1.4rem;max-width:36ch;}
+  .qualite .mot{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--terracotta);font-size:1.2rem;}
+
+  /* --- SOUVENIRS --- */
+  #souvenirs .carte{
+    background:#fff;
+    border-radius:2px;
+    padding:2rem 1.6rem;
+    margin-bottom:1.6rem;
+    max-width:340px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.04);
+  }
+  #souvenirs .carte h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;margin-bottom:0.6rem;}
+  #souvenirs .carte p{font-size:0.95rem;max-width:none;}
+
+  /* --- VISION --- */
+  #vision{background:var(--rose);}
+  .icone-vision{margin-bottom:1rem;}
+  .icone-vision svg{width:70px;height:auto;}
+  .icone-vision path{fill:none;stroke:var(--or);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .valeur{
+    background:#fff;
+    padding:1.8rem;
+    margin-bottom:1.2rem;
+    max-width:340px;
+    border-left:2px solid var(--or);
+    text-align:left;
+  }
+  .valeur h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:0.5rem;}
+  .valeur p{font-size:0.95rem;max-width:none;}
+
+  /* --- LETTRE / ENVELOPPE --- */
+  #lettre{background:var(--texte);color:var(--bg);}
+  #lettre h2{color:var(--bg);}
+  .enveloppe{
+    width:min(280px,70vw);
+    aspect-ratio:3/2;
+    background:var(--rose);
+    border:1px solid var(--or);
+    position:relative;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--texte);
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.05rem;
+    transition:transform 0.4s ease;
+  }
+  .enveloppe:hover{transform:translateY(-4px);}
+  .enveloppe::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:50%;
+    background:var(--terracotta);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transition:transform 0.6s ease;
+    transform-origin:top;
+  }
+  .enveloppe.ouverte::before{transform:rotateX(180deg);}
+  .lettre-texte{
+    display:none;
+    max-width:44ch;
+    background:#fff;
+    color:var(--texte);
+    padding:2.2rem 1.8rem;
+    margin-top:2rem;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.15rem;
+    line-height:1.9;
+    text-align:left;
+    white-space:pre-line;
+  }
+  .lettre-texte.visible{display:block;animation:fadeUp 0.8s ease forwards;}
+
+  /* --- FINAL --- */
+  #final{background:var(--bg);}
+  #final h2{font-size:clamp(1.6rem,6vw,2.3rem);max-width:20ch;}
+  #final .coeur{margin-top:1.5rem;color:var(--terracotta);font-size:1.3rem;}
+
+  :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<section id="accueil">
+  <div class="petales" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="etincelles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <h1>Pour Andrea</h1>
+  <div class="illustration" aria-hidden="true">
+    <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 82 C20 60 4 40 4 22 C4 8 16 2 26 2 C36 2 46 10 50 20 C54 10 64 2 74 2 C84 2 96 8 96 22 C96 40 80 60 50 82 Z"/>
+    </svg>
+  </div>
+  <p class="signature">Je t'aime.</p>
+  <div class="fleche">↓</div>
+</section>
+
+<section id="debut">
+  <h2 class="reveal">Le début</h2>
+  <div class="chibi reveal" aria-hidden="true">
+    <svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+      <circle class="tete" cx="55" cy="38" r="24"/>
+      <path class="corps" d="M30 118 C30 85 40 66 55 66 C70 66 80 85 80 118 Z"/>
+      <circle class="tete tete-2" cx="165" cy="38" r="24"/>
+      <path class="corps corps-2" d="M140 118 C140 85 150 66 165 66 C180 66 190 85 190 118 Z"/>
+      <path class="coeur-vol" d="M110 52 C104 44 92 44 92 54 C92 62 100 68 110 76 C120 68 128 62 128 54 C128 44 116 44 110 52 Z"/>
+    </svg>
+  </div>
+  <p class="reveal">Rien de spectaculaire, juste un jour comme un autre. Mais depuis, il compte plus que je ne l'aurais imaginé.</p>
+</section>
+
+<section id="pourquoi">
+  <h2 class="reveal">Pourquoi je t'apprécie</h2>
+  <div class="qualite reveal">
+    <p class="mot">Ton calme</p>
+    <p>Tu as cette façon de rester posée qui me fait du bien, même quand tout va vite autour.</p>
+  </div>
+  <div class="qualite reveal">
+    <p class="mot">Ton sourire</p>
+    <p>Il change quelque chose dans une pièce. Je ne sais pas comment l'expliquer autrement.</p>
+  </div>
+  <div class="qualite reveal">
+    <p class="mot">Ta timidité</p>
+    <p>Ce petit temps avant de parler, avant de t'ouvrir — j'aime le respecter, et j'aime encore plus quand tu le dépasses avec moi.</p>
+  </div>
+  <div class="qualite reveal">
+    <p class="mot">Ta maturité</p>
+    <p>Tu réfléchis avant d'agir. Ça me donne envie de grandir, moi aussi, à ton rythme.</p>
+  </div>
+</section>
+
+<section id="souvenirs">
+  <h2 class="reveal">Ce qui commence</h2>
+  <div class="carte reveal">
+    <h3>Pas encore de souvenirs</h3>
+    <p>On n'a pas encore d'histoire à raconter ici — juste un début. Cette page reviendra, avec de vraies pages qui se rempliront, une par une.</p>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="icone-vision reveal" aria-hidden="true">
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 30 C15 10 25 8 30 18 C35 8 45 10 55 30 C45 24 35 26 30 34 C25 26 15 24 5 30 Z"/>
+    </svg>
+  </div>
+  <h2 class="reveal">Notre vision</h2>
+  <div class="valeur reveal">
+    <h3>Grandir ensemble</h3>
+    <p>Grandir dans notre foi, chacun avec l'autre, sans jamais s'éloigner de Dieu.</p>
+  </div>
+  <div class="valeur reveal">
+    <h3>Être là l'un pour l'autre</h3>
+    <p>Se soutenir dans les moments qui comptent — comme notre probatoire, qu'on veut réussir ensemble.</p>
+  </div>
+  <div class="valeur reveal">
+    <h3>Construire de vrais souvenirs</h3>
+    <p>Ne pas se presser. Prendre le temps de construire, un jour à la fois, quelque chose qui nous ressemble vraiment.</p>
+  </div>
+  <div class="valeur reveal">
+    <h3>Protéger cette relation</h3>
+    <p>Prendre soin de ce qu'on construit, même quand ça demande des efforts.</p>
+  </div>
+</section>
+
+<section id="lettre">
+  <h2 class="reveal">Une lettre pour toi</h2>
+  <div class="enveloppe reveal" id="enveloppe" role="button" tabindex="0" aria-label="Ouvrir la lettre">
+    Touche pour ouvrir
+  </div>
+  <div class="lettre-texte" id="lettreTexte">Andrea,
+
+Je repense souvent à ce jour où tout a commencé. Je crois que je ne t'ai jamais vraiment dit à quel point ce moment compte pour moi — surtout venant de quelqu'un d'aussi timide que toi.
+
+Depuis, j'ai appris à te connaître un peu : ton calme qui apaise, ce sourire qui arrive sans prévenir, et cette maturité qui me pousse, moi aussi, à réfléchir avant d'agir.
+
+On n'a pas encore beaucoup de souvenirs. Pas encore de longue histoire à raconter. Mais je crois que ce n'est pas grave — je préfère construire lentement quelque chose de vrai que d'inventer quelque chose de grand trop vite.
+
+Ce que je souhaite, sincèrement, c'est qu'on grandisse ensemble : dans le respect, dans la communication, et en gardant Dieu au centre de tout ça, sans jamais devenir dépendants l'un de l'autre.
+
+Merci d'avoir osé, ce jour-là.
+
+Trésor</div>
+</section>
+
+<section id="final">
+  <h2 class="reveal">On commence à peine. Et ça me va très bien.</h2>
+  <p class="coeur reveal">❤</p>
+</section>
+
+<script>
+  // Enveloppe
+  const env = document.getElementById('enveloppe');
+  const texte = document.getElementById('lettreTexte');
+  function ouvrir(){
+    env.classList.add('ouverte');
+    env.textContent = '';
+    texte.classList.add('visible');
+  }
+  env.addEventListener('click', ouvrir);
+  env.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') ouvrir(); });
+
+  // Apparitions au scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.2});
+  reveals.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
